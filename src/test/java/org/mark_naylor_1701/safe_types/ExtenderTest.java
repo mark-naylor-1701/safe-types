@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExtenderTest {
-    private Double smallPi = 3.14;
-    private String abcdVal = "abcd";
+    private static final Double smallPi = 3.14;
+    private static final String abcdVal = "abcd";
 
     @Test
-    void ConstructerTest() {
-        Extender<Double> pi = new Extender<Double>(smallPi);
-        Extender<String> abcd = new Extender<String>(abcdVal);
+    void constructorTest() {
+        final Extender<Double> pi = new Extender<>(smallPi);
+        final Extender<String> abcd = new Extender<>(abcdVal);
 
         assertNotNull(pi);
-        assertEquals(smallPi, pi.value);
+        assertEquals(smallPi, pi.getValue());
 
         assertNotNull(abcd);
-        assertEquals(abcdVal, abcd.value);
+        assertEquals(abcdVal, abcd.getValue());
     }
 }

@@ -1,18 +1,18 @@
 // author: Mark W. Naylor
-// file:  Library.java
-// date:  2021-Aug-06
+// file:  WaterTemperature.java
+// date:  2021-Aug-08
 
 package org.mark_naylor_1701.safe_types;
 
-public class Extender<T> {
-    private final T value;
+import static org.mark_naylor_1701.safe_types.Water.freezingPoint;
+import static org.mark_naylor_1701.safe_types.Water.boilingPoint;
 
-    Extender (T value) {
-        this.value = value;
-    }
+public class WaterTemperature extends  Celsius{
 
-    public T getValue() {
-        return value;
+    public WaterTemperature(Double val) {
+        super(val);
+        assert val >= freezingPoint : "Temperature below freezing point; 0.0";
+        assert val <= boilingPoint : "Temperature above boiling point; 100.0.";
     }
 }
 

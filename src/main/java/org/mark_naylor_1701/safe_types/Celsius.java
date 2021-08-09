@@ -1,18 +1,15 @@
 // author: Mark W. Naylor
-// file:  Library.java
-// date:  2021-Aug-06
+// file:  Celsius.java
+// date:  2021-Aug-08
 
 package org.mark_naylor_1701.safe_types;
 
-public class Extender<T> {
-    private final T value;
+public class Celsius<T> extends Extender<Double> {
+    private static final Double absoluteZero = -273.15;
 
-    Extender (T value) {
-        this.value = value;
-    }
-
-    public T getValue() {
-        return value;
+    public Celsius(Double val) {
+        super(val);
+        assert val >= Celsius.absoluteZero : "No temperature below -273.15 accepted.";
     }
 }
 

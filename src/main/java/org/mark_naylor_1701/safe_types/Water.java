@@ -1,19 +1,12 @@
 // author: Mark W. Naylor
-// file:  Library.java
-// date:  2021-Aug-06
+// file:  Water.java
+// date:  2021-Aug-08
 
 package org.mark_naylor_1701.safe_types;
 
-public class Extender<T> {
-    private final T value;
-
-    Extender (T value) {
-        this.value = value;
-    }
-
-    public T getValue() {
-        return value;
-    }
+public class Water {
+    final static Double freezingPoint = 0.0;
+    final static Double boilingPoint = 100.0;
 }
 
 // ------------------------------------------------------------------------------

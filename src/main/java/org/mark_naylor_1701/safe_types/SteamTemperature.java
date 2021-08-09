@@ -1,18 +1,13 @@
 // author: Mark W. Naylor
-// file:  Library.java
-// date:  2021-Aug-06
+// file:  SteamTemperature.java
+// date:  2021-Aug-08
 
 package org.mark_naylor_1701.safe_types;
 
-public class Extender<T> {
-    private final T value;
-
-    Extender (T value) {
-        this.value = value;
-    }
-
-    public T getValue() {
-        return value;
+public class SteamTemperature extends Celsius {
+    public SteamTemperature(Double val) {
+        super(val);
+        assert val >= Water.boilingPoint : "Must be at or above boiling point.";
     }
 }
 
