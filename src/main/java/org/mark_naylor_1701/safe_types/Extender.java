@@ -4,11 +4,26 @@
 
 package org.mark_naylor_1701.safe_types;
 
+import java.util.Objects;
+
 public class Extender<T> {
     private final T value;
 
     Extender (T value) {
         this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Extender)) return false;
+        Extender<?> extender = (Extender<?>) o;
+        return getValue().equals(extender.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValue());
     }
 
     public T getValue() {

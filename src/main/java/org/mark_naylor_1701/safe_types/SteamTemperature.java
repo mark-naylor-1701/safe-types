@@ -4,10 +4,29 @@
 
 package org.mark_naylor_1701.safe_types;
 
+import static org.mark_naylor_1701.safe_types.Water.boilingPoint;
+
 public class SteamTemperature extends Celsius {
-    public SteamTemperature(Double val) {
+    static private final String msg = "Must be at or above boiling point.";
+
+    public SteamTemperature(Number val) {
         super(val);
-        assert val >= Water.boilingPoint : "Must be at or above boiling point.";
+        assert val.doubleValue() >= boilingPoint : msg;
+    }
+
+    public SteamTemperature(Celsius val) {
+        super(val.getValue());
+        assert val.getValue().doubleValue() >= boilingPoint: msg;
+    }
+
+    @Override
+    public SteamTemperature add(Celsius temperature) {
+        return new SteamTemperature(super.add(temperature));
+    }
+
+    @Override
+    public SteamTemperature subtract(Celsius temperature) {
+        return new SteamTemperature(super.subtract(temperature));
     }
 }
 

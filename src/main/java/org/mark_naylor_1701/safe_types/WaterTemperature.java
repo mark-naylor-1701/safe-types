@@ -7,12 +7,30 @@ package org.mark_naylor_1701.safe_types;
 import static org.mark_naylor_1701.safe_types.Water.freezingPoint;
 import static org.mark_naylor_1701.safe_types.Water.boilingPoint;
 
-public class WaterTemperature extends  Celsius{
+public class WaterTemperature extends  Celsius {
+    static private final String freezeMsg = "Temperature below freezing point; 0.0";
+    static private final String boilMsg = "Temperature above boiling point; 100.0.";
 
     public WaterTemperature(Double val) {
         super(val);
-        assert val >= freezingPoint : "Temperature below freezing point; 0.0";
-        assert val <= boilingPoint : "Temperature above boiling point; 100.0.";
+        assert val >= freezingPoint : freezeMsg;
+        assert val <= boilingPoint : boilMsg;
+    }
+
+    public WaterTemperature(Celsius val) {
+        super(val.getValue());
+        assert val.getValue().doubleValue() >= freezingPoint : freezeMsg;
+        assert val.getValue().doubleValue() <= boilingPoint : boilMsg;
+    }
+
+    @Override
+    public WaterTemperature add(Celsius that) {
+        return new WaterTemperature(super.add(that));
+    }
+
+    @Override
+    public WaterTemperature subtract(Celsius that) {
+        return new WaterTemperature(super.subtract(that));
     }
 }
 

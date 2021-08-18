@@ -4,12 +4,22 @@
 
 package org.mark_naylor_1701.safe_types;
 
-public class Celsius<T> extends Extender<Double> {
+public class Celsius extends MetricUnit {
     private static final Double absoluteZero = -273.15;
+    protected static final String defaultValue = "C";
 
-    public Celsius(Double val) {
-        super(val);
-        assert val >= Celsius.absoluteZero : "No temperature below -273.15 accepted.";
+
+    public Celsius(Number val) {
+        super(val, defaultValue);
+        assert val.doubleValue() >= Celsius.absoluteZero : "No temperature below -273.15 accepted.";
+    }
+
+    public Celsius add(Celsius temperature) {
+        return new Celsius(getValue().doubleValue() + temperature.getValue().doubleValue());
+    }
+
+    public Celsius subtract(Celsius temperature) {
+        return new Celsius(getValue().doubleValue() - temperature.getValue().doubleValue());
     }
 }
 

@@ -4,10 +4,29 @@
 
 package org.mark_naylor_1701.safe_types;
 
+import static org.mark_naylor_1701.safe_types.Water.freezingPoint;
+
 public class IceTemperature extends Celsius {
-    public IceTemperature(Double val) {
+    static private final String msg = "Must be at or below freezing point.";
+
+    public IceTemperature(Number val) {
         super(val);
-        assert val <= Water.freezingPoint : "Must be at or below freezing point.";
+        assert val.doubleValue() <= freezingPoint : msg;
+    }
+
+    public IceTemperature(Celsius val) {
+        super(val.getValue());
+        assert val.getValue().doubleValue() <= freezingPoint : msg;
+    }
+
+    @Override
+    public IceTemperature add(Celsius that) {
+        return new IceTemperature(super.add(that));
+    }
+
+    @Override
+    public IceTemperature subtract(Celsius that) {
+        return new IceTemperature(super.subtract(that));
     }
 }
 
